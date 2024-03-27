@@ -49,7 +49,6 @@
 		4B58E830260F0027004A834F /* orientation_up_mirrored.HEIC in Resources */ = {isa = PBXBuildFile; fileRef = 4B254FEB260BB32600F77E9A /* orientation_up_mirrored.HEIC */; };
 		4B58E831260F0027004A834F /* orientation_up.HEIC in Resources */ = {isa = PBXBuildFile; fileRef = 4B254FED260BB32600F77E9A /* orientation_up.HEIC */; };
 		4B58E889260F0DEA004A834F /* DemoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58E888260F0DEA004A834F /* DemoPreviewViewController.swift */; };
-		4B5E72BC2B6B761800DE7A2A /* Reveal-SDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5E72BB2B6B761800DE7A2A /* Reveal-SDK */; };
 		4B600B23216B7C9C001E1456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B600B22216B7C9C001E1456 /* AppDelegate.swift */; };
 		4B600B2A216B7C9E001E1456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B600B29216B7C9E001E1456 /* Assets.xcassets */; };
 		4B600B2D216B7C9E001E1456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B600B2B216B7C9E001E1456 /* LaunchScreen.storyboard */; };
@@ -1066,7 +1065,6 @@
 				FC06C87F2A53AF4500215B89 /* BrightroomEngine in Frameworks */,
 				4B7513C82B6BEDFD00A4743E /* SwiftUIHosting in Frameworks */,
 				4BA2B1B42B86282D00E6DE64 /* BrightroomUIPhotosCrop in Frameworks */,
-				4B5E72BC2B6B761800DE7A2A /* Reveal-SDK in Frameworks */,
 				FC06C8812A53AF4500215B89 /* BrightroomUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1785,7 +1783,6 @@
 			packageProductDependencies = (
 				FC06C87E2A53AF4500215B89 /* BrightroomEngine */,
 				FC06C8802A53AF4500215B89 /* BrightroomUI */,
-				4B5E72BB2B6B761800DE7A2A /* Reveal-SDK */,
 				4B7513C72B6BEDFD00A4743E /* SwiftUIHosting */,
 				4B7513CA2B6BEE2100A4743E /* SwiftUISupport */,
 				4B46E71A2B762E20003179C2 /* MondrianLayout */,
@@ -2998,10 +2995,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B487E7028EECCB10026A8CF /* XCRemoteSwiftPackageReference "TextureSwiftSupport" */;
 			productName = TextureSwiftSupport;
-		};
-		4B5E72BB2B6B761800DE7A2A /* Reveal-SDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "Reveal-SDK";
 		};
 		4B7513C72B6BEDFD00A4743E /* SwiftUIHosting */ = {
 			isa = XCSwiftPackageProductDependency;
