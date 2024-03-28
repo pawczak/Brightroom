@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0451857F2B8F4A9E00A74713 /* DemoCropView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451857E2B8F4A9E00A74713 /* DemoCropView2.swift */; };
+		45FF4D0A2BB58D20000B5344 /* FitFillCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF4D092BB58D20000B5344 /* FitFillCropView.swift */; };
 		4B135F6E26136B5D003B5152 /* RendererOrientationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B135F6D26136B5D003B5152 /* RendererOrientationTests.swift */; };
 		4B2324E42B763D4A00662EB8 /* GeometryPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2324E32B763D4A00662EB8 /* GeometryPlayground.swift */; };
 		4B2A1107266B7B3000B0C885 /* test-image-10 in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A10FA266B7B3000B0C885 /* test-image-10 */; };
@@ -569,6 +570,7 @@
 
 /* Begin PBXFileReference section */
 		0451857E2B8F4A9E00A74713 /* DemoCropView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCropView2.swift; sourceTree = "<group>"; };
+		45FF4D092BB58D20000B5344 /* FitFillCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFillCropView.swift; sourceTree = "<group>"; };
 		4B135F6D26136B5D003B5152 /* RendererOrientationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererOrientationTests.swift; sourceTree = "<group>"; };
 		4B2324E32B763D4A00662EB8 /* GeometryPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryPlayground.swift; sourceTree = "<group>"; };
 		4B254FE6260BB32600F77E9A /* orientation_left_mirrored.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = orientation_left_mirrored.HEIC; sourceTree = "<group>"; };
@@ -1263,6 +1265,7 @@
 				4BA989702B70F10300EB7983 /* ObjectEdge.swift */,
 				4BA989722B7122C800EB7983 /* DemoMaskingView.swift */,
 				4B2324E32B763D4A00662EB8 /* GeometryPlayground.swift */,
+				45FF4D092BB58D20000B5344 /* FitFillCropView.swift */,
 			);
 			path = SwiftUIDemo;
 			sourceTree = "<group>";
@@ -2430,6 +2433,7 @@
 				4BA9896F2B70BF2000EB7983 /* RenderedResultView.swift in Sources */,
 				4B98CCBE25EFF31300E4F61F /* ContentView.swift in Sources */,
 				4B75114025F13276002D804A /* DemoCropView.swift in Sources */,
+				45FF4D0A2BB58D20000B5344 /* FitFillCropView.swift in Sources */,
 				0451857F2B8F4A9E00A74713 /* DemoCropView2.swift in Sources */,
 				4B9325832B6A923400DDABAC /* RotateScrollView.swift in Sources */,
 				4B98CCBC25EFF31300E4F61F /* SwiftUIDemoApp.swift in Sources */,

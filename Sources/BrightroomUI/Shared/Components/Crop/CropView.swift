@@ -114,6 +114,8 @@ public final class CropView: UIView, UIScrollViewDelegate {
     }
   }
 
+    public let cropExtension: CGSize
+
   public var isScrollEnabled: Bool {
     get {
       scrollView.isScrollEnabled
@@ -129,10 +131,15 @@ public final class CropView: UIView, UIScrollViewDelegate {
    An image view that displayed in the scroll view.
    */
   private let imagePlatterView = ImagePlatterView()
-
   private let scrollPlatterView = UIView()
 
-  #if DEBUG
+    
+    /**
+     Additional background for image
+     */
+    private let imageBackgroundPlatterView: ImageBakcgroundPlatterView?
+  
+    #if DEBUG
   private let _debug_shapeLayer: CAShapeLayer = {
     let layer = CAShapeLayer()
     layer.strokeColor = UIColor.red.cgColor
@@ -239,16 +246,20 @@ public final class CropView: UIView, UIScrollViewDelegate {
 
   public init(
     editingStack: EditingStack,
-    contentInset: UIEdgeInsets = .init(top: 20, left: 20, bottom: 20, right: 20)
+    contentInset: UIEdgeInsets = .init(top: 20, left: 20, bottom: 20, right: 20),
+    cropExtension: CGSize = .init(width: 0, height: 0)
   ) {
     _pixeleditor_ensureMainThread()
 
     self.editingStack = editingStack
     self.contentInset = contentInset
-
+    self.cropExtension = cropExtension
+      
     self.store = .init(initialState: .init(), logger: nil)
+      
+    imageBackgroundPlatterView = cropExtension.equalTo(CGSize.zero) ? nil : ImageBakcgroundPlatterView()
 
-    super.init(frame: .zero)
+      super.init(frame: .zero)
 
     scrollBackdropView.accessibilityIdentifier = "scrollBackdropView"
 
@@ -265,7 +276,14 @@ public final class CropView: UIView, UIScrollViewDelegate {
     addSubview(guideView)
 
     imagePlatterView.isUserInteractionEnabled = true
+      
+      if let imageBackgroundPlatterView = self.imageBackgroundPlatterView {
+          imageBackgroundPlatterView.isUserInteractionEnabled = true
+        scrollView.addSubview(imageBackgroundPlatterView)
+    }
+      
     scrollView.addSubview(imagePlatterView)
+   
     scrollView.delegate = self
 
     guideView.didChange = { [weak self] in
@@ -355,10 +373,17 @@ public final class CropView: UIView, UIScrollViewDelegate {
               if self.hasSetupScrollViewCompleted == false {
                 self.hasSetupScrollViewCompleted = true
 
+                let size = crop.scrollViewContentSize()
+                  
                 self.imagePlatterView.bounds = .init(
                   origin: .zero,
                   size: crop.scrollViewContentSize()
                 )
+                  
+                  self.imageBackgroundPlatterView?.bounds = .init(
+                    origin: .zero,
+                    size: crop.scrollViewContentSize()
+                  )
 
                 let scrollView = self.scrollView
 
@@ -407,7 +432,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
             loaded.ifChanged(\.imageForCrop).do { image in
               self.setImage(image)
             }
-
+              
             loaded.ifChanged(\.currentEdit.crop).do { crop in
               self.setCrop(loaded.currentEdit.crop)
             }
@@ -654,7 +679,7 @@ extension CropView {
       orientation: .up
     )
   }
-
+    
   override public func layoutSubviews() {
     super.layoutSubviews()
 
@@ -778,6 +803,7 @@ extension CropView {
           scrollView.maximumZoomScale = max
 
           imagePlatterView.frame.origin = .zero
+            UpdateBackgroundImagePlatterView()
 
           func _zoom() {
 
@@ -1083,6 +1109,13 @@ extension CropView {
     guideView.didEndScrollViewAdjustment()
   }
 
+    private func UpdateBackgroundImagePlatterView() {
+        imageBackgroundPlatterView?.frame.origin = imagePlatterView.frame.origin
+        imageBackgroundPlatterView?.bounds.origin = imagePlatterView.bounds.origin
+          imageBackgroundPlatterView?.center = imagePlatterView.center
+          imageBackgroundPlatterView?.setNeedsLayout()
+      }
+    
   var remainingScroll: UIEdgeInsets {
 
     guard let crop = store.state.proposedCrop else { 
@@ -1091,19 +1124,23 @@ extension CropView {
 
     let sourceInsets: UIEdgeInsets = {
 
-      let guideViewRectInPlatter = guideView.convert(guideView.bounds, to: imagePlatterView)
+        guard let maxCropView = imageBackgroundPlatterView != nil ? imageBackgroundPlatterView : imagePlatterView else{
+            return UIEdgeInsets()
+        }
+        
+      let guideViewRectInPlatter = guideView.convert(guideView.bounds, to: maxCropView)
 
       let scale = Geometry.diagonalRatio(to: guideView.bounds.size, from: guideViewRectInPlatter.size)
 
       print(scale)
 
-      let outbound = imagePlatterView.bounds
+      let outbound = maxCropView.bounds
 
       let value = UIEdgeInsets(
         top: guideViewRectInPlatter.minY - outbound.minY,
         left: guideViewRectInPlatter.minX - outbound.minX,
         bottom: outbound.maxY - guideViewRectInPlatter.maxY,
-        right: outbound.maxX - guideViewRectInPlatter.maxX
+        right: outbound.maxX  - guideViewRectInPlatter.maxX
       )
 
 #if false

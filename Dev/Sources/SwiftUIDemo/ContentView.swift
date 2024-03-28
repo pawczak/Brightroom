@@ -16,6 +16,12 @@ struct ContentView: View {
 
         Form {
 
+          NavigationLink("FitFill Crop View") {
+            FitFillCropView(editingStack: {
+              horizontalStack
+            })
+          }
+          
           NavigationLink("ImagePreviewView") {
             DemoCropView2(editingStack: {
               horizontalStack

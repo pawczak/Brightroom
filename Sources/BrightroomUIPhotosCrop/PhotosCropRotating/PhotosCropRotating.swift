@@ -52,6 +52,7 @@ public struct PhotosCropRotating: View {
   }
 
   @StateObject var editingStack: EditingStack
+    private var cropExtension: CGSize
 
   @State private var rotation: EditingCrop.Rotation?
   @State private var adjustmentAngle: EditingCrop.AdjustmentAngle?
@@ -65,9 +66,11 @@ public struct PhotosCropRotating: View {
   @State var reset: SwiftUICropView.ResetAction = .init()
 
   public init(
-    editingStack: @escaping () -> EditingStack
+    editingStack: @escaping () -> EditingStack,
+    cropExtension: CGSize = CGSize(width: 0, height: 0)
   ) {
     self._editingStack = .init(wrappedValue: editingStack())
+      self.cropExtension = cropExtension
   }
 
   private var isLoading: Bool {
@@ -144,6 +147,7 @@ public struct PhotosCropRotating: View {
 
           SwiftUICropView(
             editingStack: editingStack,
+            cropExtension: cropExtension,
             stateHandler: { state in
 
               Task { @MainActor in

@@ -83,10 +83,13 @@ public struct SwiftUICropView: UIViewControllerRepresentable {
   private let isGuideInteractionEnabled: Bool
   private let contentInset: UIEdgeInsets?
 
+    private let cropExtension: CGSize
+    
   public init<InsideOverlay: View, OutsideOverlay: View>(
     editingStack: EditingStack,
     isGuideInteractionEnabled: Bool = true,
     contentInset: UIEdgeInsets? = nil,
+    cropExtension: CGSize = CGSize(width: 0, height: 0),
     @ViewBuilder cropInsideOverlay: @escaping (CropView.State.AdjustmentKind?) -> InsideOverlay,
     @ViewBuilder cropOutsideOverlay: @escaping (CropView.State.AdjustmentKind?) -> OutsideOverlay,
     stateHandler: @escaping @MainActor (Verge.Changes<CropView.State>) -> Void = { _ in }
@@ -94,6 +97,7 @@ public struct SwiftUICropView: UIViewControllerRepresentable {
     self.editingStack = editingStack
     self.isGuideInteractionEnabled = isGuideInteractionEnabled
     self.contentInset = contentInset
+      self.cropExtension = cropExtension
     self.cropInsideOverlay = { AnyView(cropInsideOverlay($0)) }
     self.cropOutsideOverlay = { AnyView(cropOutsideOverlay($0)) }
     self.stateHandler = stateHandler
@@ -103,6 +107,7 @@ public struct SwiftUICropView: UIViewControllerRepresentable {
     editingStack: EditingStack,
     isGuideInteractionEnabled: Bool = true,
     contentInset: UIEdgeInsets? = nil,
+    cropExtension: CGSize = CGSize(width: 0, height: 0),
     stateHandler: @escaping @MainActor (Verge.Changes<CropView.State>) -> Void = { _ in }
   ) {
     self.cropInsideOverlay = nil
@@ -110,6 +115,7 @@ public struct SwiftUICropView: UIViewControllerRepresentable {
     self.editingStack = editingStack
     self.isGuideInteractionEnabled = isGuideInteractionEnabled
     self.contentInset = contentInset
+    self.cropExtension = cropExtension
     self.stateHandler = stateHandler
   }
 
@@ -119,7 +125,7 @@ public struct SwiftUICropView: UIViewControllerRepresentable {
     if let contentInset {
       view = .init(editingStack: editingStack, contentInset: contentInset)
     } else {
-      view = .init(editingStack: editingStack)
+      view = .init(editingStack: editingStack, cropExtension: cropExtension)
     }
 
     view.isAutoApplyEditingStackEnabled = true

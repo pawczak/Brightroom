@@ -28,7 +28,7 @@ extension CropView {
    */
   final class _CropScrollView: UIScrollView {
     override init(frame: CGRect) {
-      super.init(frame: frame)
+        super.init(frame: frame)
       
       initialize()
     }
@@ -106,6 +106,7 @@ extension CropView {
       #if DEBUG
       layer.addSublayer(debugShapeLayer)
       debugShapeLayer.frame = bounds
+        print("Image platter view frame: ", frame)
       #endif
     }
 
@@ -116,5 +117,44 @@ extension CropView {
     }
 
   }
+    
+    final class ImageBakcgroundPlatterView: UIView {
+
+      #if DEBUG
+      private let debugShapeLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.strokeColor = UIColor.systemBlue.cgColor
+        layer.lineWidth = 2
+        layer.fillColor = nil
+        return layer
+      }()
+      #endif
+
+      override init(frame: CGRect) {
+          super.init(frame: frame)
+          layer.drawsAsynchronously = true
+          backgroundColor = UIColor(cgColor: CGColor(red: 0.5, green: 1, blue: 1, alpha: 1))
+      }
+      
+      required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+      }
+      
+      override func layoutSubviews() {
+        super.layoutSubviews()
+        #if DEBUG
+        layer.addSublayer(debugShapeLayer)
+        debugShapeLayer.frame = bounds
+          print("Image background platter view frame: ", frame)
+        #endif
+      }
+
+      func _debug_setPath(path: UIBezierPath) {
+        #if DEBUG
+        debugShapeLayer.path = path.cgPath
+        #endif
+      }
+
+    }
 
 }

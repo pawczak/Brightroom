@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fc1db86-0443-4cba-9e4e-1cbdca24601c" name="Changes" comment="" />
+    <list default="true" id="4fc1db86-0443-4cba-9e4e-1cbdca24601c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dev/Sources/SwiftUIDemo/FitFillCropView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dev/Sources/SwiftUIDemo/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Dev/Sources/SwiftUIDemo/ContentView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._CropScrollView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._CropScrollView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._InteractiveCropGuideView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._InteractiveCropGuideView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/SwiftUICropView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/SwiftUICropView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUIPhotosCrop/PhotosCropRotating/PhotosCropRotating.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUIPhotosCrop/PhotosCropRotating/PhotosCropRotating.swift" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +24,11 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -25,21 +38,22 @@
     <option name="minorVersion" value="1.3" />
   </component>
   <component name="ProjectId" id="2eGixKkPwhyhZ067c6wNQ30XqI5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/Users/pawczak/projects/Brightroom",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pawczak/projects/Brightroom&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Swift Package Run.BrightroomEngine">
     <configuration name="BrightroomEngine" type="SwiftPackageManagerRunConfiguration" factoryName="Swift Package Run" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Brightroom" TARGET_NAME="BrightroomEngine" CONFIG_NAME="BrightroomEngine">
       <method v="2">

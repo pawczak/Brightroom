@@ -73,7 +73,7 @@ extension CropView {
     private let minimumSize = CGSize(width: 80, height: 80)
     
     private let insetOfGuideFlexibility: UIEdgeInsets
-
+      
     init(
       containerView: CropView,
       imageView: UIView,
