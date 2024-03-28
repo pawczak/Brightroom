@@ -380,10 +380,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
                   size: crop.scrollViewContentSize()
                 )
                   
-                  self.imageBackgroundPlatterView?.bounds = .init(
-                    origin: .zero,
-                    size: crop.scrollViewContentSize()
-                  )
+                  self.updateBackgroundImagePlatterView()
 
                 let scrollView = self.scrollView
 
@@ -803,7 +800,7 @@ extension CropView {
           scrollView.maximumZoomScale = max
 
           imagePlatterView.frame.origin = .zero
-            UpdateBackgroundImagePlatterView()
+            updateBackgroundImagePlatterView()
 
           func _zoom() {
 
@@ -1109,10 +1106,11 @@ extension CropView {
     guideView.didEndScrollViewAdjustment()
   }
 
-    private func UpdateBackgroundImagePlatterView() {
-        imageBackgroundPlatterView?.frame.origin = imagePlatterView.frame.origin
-        imageBackgroundPlatterView?.bounds.origin = imagePlatterView.bounds.origin
-          imageBackgroundPlatterView?.center = imagePlatterView.center
+    private func updateBackgroundImagePlatterView() {
+        imageBackgroundPlatterView?.frame = CGRect(origin: CGPoint(x: imagePlatterView.frame.origin.x - cropExtension.width/2,
+                                                                   y: imagePlatterView.frame.origin.y - cropExtension.height/2),
+                                                   size: CGSize(width: imagePlatterView.frame.size.width + cropExtension.width,
+                                                                           height: imagePlatterView.frame.size.height + cropExtension.height))
           imageBackgroundPlatterView?.setNeedsLayout()
       }
     
