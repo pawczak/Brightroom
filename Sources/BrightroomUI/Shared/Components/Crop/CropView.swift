@@ -137,8 +137,6 @@ public final class CropView: UIView, UIScrollViewDelegate {
     /**
      Additional background for image
      */
-    private let imageBackgroundPlatterView: ImageBakcgroundPlatterView?
-  
     #if DEBUG
   private let _debug_shapeLayer: CAShapeLayer = {
     let layer = CAShapeLayer()
@@ -256,9 +254,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
     self.cropExtension = cropExtension
       
     self.store = .init(initialState: .init(), logger: nil)
-      
-//    imageBackgroundPlatterView = cropExtension.equalTo(CGSize.zero) ? nil : ImageBakcgroundPlatterView()
-    imageBackgroundPlatterView = nil
+
       imagePlatterView = ImagePlatterView(frame: CGRect(), imageExtension: cropExtension)
       
       super.init(frame: .zero)
@@ -277,14 +273,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
     addSubview(guideBackdropView)
     addSubview(guideView)
 
-
-      
     imagePlatterView.isUserInteractionEnabled = true
-      
-      if let imageBackgroundPlatterView = self.imageBackgroundPlatterView {
-          imageBackgroundPlatterView.isUserInteractionEnabled = true
-        scrollView.addSubview(imageBackgroundPlatterView)
-    }
       
     scrollView.addSubview(imagePlatterView)
    
@@ -384,8 +373,6 @@ public final class CropView: UIView, UIScrollViewDelegate {
                   origin: .zero,
                   size: extendedSize
                 )
-                  
-                  self.updateBackgroundImagePlatterView()
 
                 let scrollView = self.scrollView
 
@@ -798,14 +785,14 @@ extension CropView {
           let (min, max) = crop.calculateZoomScale(
             visibleSize: guideView.bounds
               .applying(CGAffineTransform(rotationAngle: crop.aggregatedRotation.radians))
-              .size
+              .size,
+            extensionSize: cropExtension
           )
 
           scrollView.minimumZoomScale = min
           scrollView.maximumZoomScale = max
 
           imagePlatterView.frame.origin = .zero
-            updateBackgroundImagePlatterView()
 
           func _zoom() {
 
@@ -1110,14 +1097,6 @@ extension CropView {
     didChangeScrollView()
     guideView.didEndScrollViewAdjustment()
   }
-
-    private func updateBackgroundImagePlatterView() {
-        imageBackgroundPlatterView?.frame = CGRect(origin: CGPoint(x: imagePlatterView.frame.origin.x - cropExtension.width/2,
-                                                                   y: imagePlatterView.frame.origin.y - cropExtension.height/2),
-                                                   size: CGSize(width: imagePlatterView.frame.size.width + cropExtension.width,
-                                                                           height: imagePlatterView.frame.size.height + cropExtension.height))
-          imageBackgroundPlatterView?.setNeedsLayout()
-      }
     
   var remainingScroll: UIEdgeInsets {
 
@@ -1127,17 +1106,13 @@ extension CropView {
 
     let sourceInsets: UIEdgeInsets = {
 
-        guard let maxCropView = imageBackgroundPlatterView != nil ? imageBackgroundPlatterView : imagePlatterView else{
-            return UIEdgeInsets()
-        }
-        
-      let guideViewRectInPlatter = guideView.convert(guideView.bounds, to: maxCropView)
+      let guideViewRectInPlatter = guideView.convert(guideView.bounds, to: imagePlatterView)
 
       let scale = Geometry.diagonalRatio(to: guideView.bounds.size, from: guideViewRectInPlatter.size)
 
       print(scale)
 
-      let outbound = maxCropView.bounds
+      let outbound = imagePlatterView.bounds
 
       let value = UIEdgeInsets(
         top: guideViewRectInPlatter.minY - outbound.minY,

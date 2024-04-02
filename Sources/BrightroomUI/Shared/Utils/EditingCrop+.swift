@@ -26,9 +26,10 @@ extension EditingCrop {
     return scaleFromOriginal
   }
 
-  func calculateZoomScale(visibleSize: CGSize) -> (min: CGFloat, max: CGFloat) {
+    func calculateZoomScale(visibleSize: CGSize, extensionSize: CGSize = CGSizeZero) -> (min: CGFloat, max: CGFloat) {
     
-    let contentSize = scrollViewContentSize()
+        let contentSize = CGSize(width: scrollViewContentSize().width + extensionSize.width,
+                                 height: scrollViewContentSize().height + extensionSize.height)
     let minXScale = visibleSize.width / contentSize.width
     let minYScale = visibleSize.height / contentSize.height
 

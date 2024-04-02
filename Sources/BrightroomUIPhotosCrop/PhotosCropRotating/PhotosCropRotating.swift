@@ -384,22 +384,26 @@ public struct PhotosCropRotating: View {
               case .vertical:
                 AspectRationButton(
                   title: Text("ORIGINAL"),
-                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init($0.imageSize) }
+                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init(CGSize(width: $0.imageSize.width + cropExtension.width,
+                                                                                                       height: $0.imageSize.height + cropExtension.height)) }
                 ) {
                   guard let imageSize = editingStack.state.loadedState?.imageSize else {
                     return
                   }
-                  croppingAspectRatio = PixelAspectRatio.init(imageSize)
+                  croppingAspectRatio = PixelAspectRatio.init(CGSize(width: imageSize.width + cropExtension.width,
+                                                                     height: imageSize.height + cropExtension.height))
                 }
               case .horizontal:
                 AspectRationButton(
                   title: Text("ORIGINAL"),
-                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init($0.imageSize).swapped() }
+                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init(CGSize(width: $0.imageSize.width + cropExtension.width,
+                                                                                                       height: $0.imageSize.height + cropExtension.height)).swapped() }
                 ) {
                   guard let imageSize = editingStack.state.loadedState?.imageSize else {
                     return
                   }
-                  croppingAspectRatio = PixelAspectRatio.init(imageSize).swapped()
+                  croppingAspectRatio = PixelAspectRatio.init(CGSize(width: imageSize.width + cropExtension.width,
+                                                                     height: imageSize.height + cropExtension.height)).swapped()
                 }
               }
             case .horizontal:
@@ -409,22 +413,26 @@ public struct PhotosCropRotating: View {
               case .vertical:
                 AspectRationButton(
                   title: Text("ORIGINAL"),
-                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init($0.imageSize).swapped() }
+                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init(CGSize(width: $0.imageSize.width + cropExtension.width,
+                                                                                                       height: $0.imageSize.height + cropExtension.height)).swapped() }
                 ) {
                   guard let imageSize = editingStack.state.loadedState?.imageSize else {
                     return
                   }
-                  croppingAspectRatio = PixelAspectRatio.init(imageSize).swapped()
+                  croppingAspectRatio = PixelAspectRatio.init(CGSize(width: imageSize.width + cropExtension.width,
+                                                                     height: imageSize.height + cropExtension.height)).swapped()
                 }
               case .horizontal:
                 AspectRationButton(
                   title: Text("ORIGINAL"),
-                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init($0.imageSize) }
+                  isSelected: croppingAspectRatio == editingStack.state.loadedState.map { .init(CGSize(width: $0.imageSize.width + cropExtension.width,
+                                                                                                       height: $0.imageSize.height + cropExtension.height)) }
                 ) {
                   guard let imageSize = editingStack.state.loadedState?.imageSize else {
                     return
                   }
-                  croppingAspectRatio = PixelAspectRatio.init(imageSize)
+                  croppingAspectRatio = PixelAspectRatio.init(CGSize(width: imageSize.width + cropExtension.width,
+                                                                     height: imageSize.height + cropExtension.height))
                 }
               }
             }
