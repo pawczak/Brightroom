@@ -78,6 +78,8 @@ extension CropView {
     }
 
     let imageView: UIImageView
+    let imageExtension: CGSize
+    let backgroundView: UIView?
 
     var overlay: UIView? {
       didSet {
@@ -88,10 +90,21 @@ extension CropView {
       }
     }
 
-    override init(frame: CGRect) {
+      init(frame: CGRect, imageExtension: CGSize = CGSizeZero) {
       self.imageView = _ImageView()
+          self.imageExtension = imageExtension
+          if (!self.imageExtension.equalTo(CGSizeZero)){
+              self.backgroundView = UIView()
+              self.backgroundView?.backgroundColor = UIColor.purple
+          }
+          else {
+              self.backgroundView = nil
+          }
       super.init(frame: frame)
 
+          if (backgroundView != nil)          {
+              addSubview(backgroundView!)
+          }
       addSubview(imageView)
     }
     
@@ -101,7 +114,11 @@ extension CropView {
     
     override func layoutSubviews() {
       super.layoutSubviews()
-      imageView.frame = bounds
+        imageView.frame = CGRect(origin: CGPoint(x: bounds.origin.x + self.imageExtension.width/2,
+                                                 y: bounds.origin.y + self.imageExtension.height/2),
+                                 size: CGSize(width: bounds.width - self.imageExtension.width,
+                                              height: bounds.height - self.imageExtension.height))
+        backgroundView?.frame = bounds
       overlay?.frame = bounds
       #if DEBUG
       layer.addSublayer(debugShapeLayer)

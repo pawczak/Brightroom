@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fc1db86-0443-4cba-9e4e-1cbdca24601c" name="Changes" comment="">
+    <list default="true" id="4fc1db86-0443-4cba-9e4e-1cbdca24601c" name="Changes" comment="Additional background inside imageView try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dev/Sources/SwiftUIDemo/FitFillCropView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Dev/Sources/SwiftUIDemo/FitFillCropView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._CropScrollView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView._CropScrollView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUI/Shared/Components/Crop/CropView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/BrightroomUIPhotosCrop/PhotosCropRotating/PhotosCropRotating.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/BrightroomUIPhotosCrop/PhotosCropRotating/PhotosCropRotating.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,10 +83,22 @@
       <option name="presentableId" value="Default" />
       <updated>1711537560987</updated>
       <workItem from="1711537564671" duration="720000" />
+      <workItem from="1712037415165" duration="962000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

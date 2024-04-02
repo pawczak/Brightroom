@@ -27,7 +27,7 @@ struct FitFillCropView: View {
     ZStack {
 
       VStack {
-        PhotosCropRotating(editingStack: { editingStack }, cropExtension: CGSize(width: 250, height: 250))
+        PhotosCropRotating(editingStack: { editingStack }, cropExtension: CGSize(width: 1000, height: 250))
 //        Button("Done") {
 //          let image = try! editingStack.makeRenderer().render().cgImage
 //          self.resultImage = .init(cgImage: image)

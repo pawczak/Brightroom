@@ -130,7 +130,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
   /**
    An image view that displayed in the scroll view.
    */
-  private let imagePlatterView = ImagePlatterView()
+    private let imagePlatterView: ImagePlatterView
   private let scrollPlatterView = UIView()
 
     
@@ -257,8 +257,10 @@ public final class CropView: UIView, UIScrollViewDelegate {
       
     self.store = .init(initialState: .init(), logger: nil)
       
-    imageBackgroundPlatterView = cropExtension.equalTo(CGSize.zero) ? nil : ImageBakcgroundPlatterView()
-
+//    imageBackgroundPlatterView = cropExtension.equalTo(CGSize.zero) ? nil : ImageBakcgroundPlatterView()
+    imageBackgroundPlatterView = nil
+      imagePlatterView = ImagePlatterView(frame: CGRect(), imageExtension: cropExtension)
+      
       super.init(frame: .zero)
 
     scrollBackdropView.accessibilityIdentifier = "scrollBackdropView"
@@ -275,6 +277,8 @@ public final class CropView: UIView, UIScrollViewDelegate {
     addSubview(guideBackdropView)
     addSubview(guideView)
 
+
+      
     imagePlatterView.isUserInteractionEnabled = true
       
       if let imageBackgroundPlatterView = self.imageBackgroundPlatterView {
@@ -374,10 +378,11 @@ public final class CropView: UIView, UIScrollViewDelegate {
                 self.hasSetupScrollViewCompleted = true
 
                 let size = crop.scrollViewContentSize()
+                  let extendedSize = CGSize(width: size.width + self.cropExtension.width, height: size.height + self.cropExtension.height)
                   
                 self.imagePlatterView.bounds = .init(
                   origin: .zero,
-                  size: crop.scrollViewContentSize()
+                  size: extendedSize
                 )
                   
                   self.updateBackgroundImagePlatterView()

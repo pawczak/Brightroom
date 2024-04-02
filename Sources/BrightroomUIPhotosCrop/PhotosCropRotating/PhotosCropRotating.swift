@@ -369,7 +369,9 @@ public struct PhotosCropRotating: View {
 
           Group {
 
-            let sourceDirection = editingStack.state.loadedState.map({ Direction(.init($0.imageSize)) })
+              let sourceDirection = editingStack.state.loadedState.map({
+                  Direction(.init(CGSize(width: $0.imageSize.width + cropExtension.width,
+                                         height: $0.imageSize.height + cropExtension.height))) })
             let direction = croppingAspectRatio.map({ Direction($0) }) ?? sourceDirection
 
             switch sourceDirection {
