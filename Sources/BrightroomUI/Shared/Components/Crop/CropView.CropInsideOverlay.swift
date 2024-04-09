@@ -45,7 +45,7 @@ extension CropView {
         cornerBottomRightVerticalShapeLayer,
       ].forEach {
         addSubview($0)
-        $0.backgroundColor = UIColor.white
+        $0.backgroundColor = UITraitCollection.current.userInterfaceStyle == .light ? UIColor.black : UIColor.white
       }
     }
 
@@ -55,7 +55,7 @@ extension CropView {
       edgeShapeLayer&>.do {
         $0.frame = bounds.insetBy(dx: -1, dy: -1)
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.white.cgColor
+        $0.layer.borderColor = UITraitCollection.current.userInterfaceStyle == .light ? UIColor.black.cgColor : UIColor.white.cgColor
       }
 
       do {
